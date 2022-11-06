@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head (title)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/menu_style.css">
+    <link rel="stylesheet" href="/css/w3_archive_common.css">
+    <link href="/css/w3.css" rel="stylesheet">
+    <script src="/js/jqmin.js"></script>
+    <title th:text="'Типы документов'"></title>
+</head>
+<body>
+<div id="layout">
+    <div id="menu">
+        <section th:replace="fragments/sections :: menu_archive"></section>
+    </div>
+    <div id="main">
+        <div class="head row w3-twothird">
+            <div class="page-head w3-show-inline-block">
+                <h1 class="page-header">Типы документов</h1>
+                <h6 class="head-message row" th:text="${flashMessage}"></h6>
+            </div>
+            <a class="my-but pressme no-decoration-link" th:href="@{/data/doc_types/create}"
+               data-tooltip="Внести данные">Добавить</a>
+        </div>
+        <div class="w3-center w3-half" th:if="${data.size() > 0}">
+            <table class="table_sort w3-table w3-bordered w3-card">
+                <thead>
+                <tr style="position: sticky; top: 3rem;">
+                    <th class="w3-center">Номер типа</th>
+                    <th class="w3-center">Название</th>
+                    <th class="w3-center"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${data}">
+                    <td class="w3-center" th:utext="${item.getId()}"></td>
+                    <td class="w3-center" th:utext="${item.getName()}"></td>
+                    <td class="w3-center"><a th:href="@{${'/data/doc_types/' + (item.getId())}}">Подробнее</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h3 th:unless="${data.size() > 0}">Нет данных</h3>
+    </div>
+</div>
+</body>
+</html>

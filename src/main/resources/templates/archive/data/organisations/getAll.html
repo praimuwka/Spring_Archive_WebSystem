@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head (title)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/menu_style.css">
+    <link rel="stylesheet" href="/css/w3_archive_common.css">
+    <link href="/css/w3.css" rel="stylesheet">
+    <script src="/js/jqmin.js"></script>
+    <title th:text="'Организации'"></title>
+</head>
+<body>
+<div id="layout">
+    <div id="menu">
+        <section th:replace="fragments/sections :: menu_archive"></section>
+    </div>
+    <div id="main">
+        <div class="head row archive-table">
+            <div class="page-head w3-show-inline-block">
+                <h1 class="page-header">Организации</h1>
+                <h6 class="head-message row" th:text="${flashMessage}"></h6>
+            </div>
+            <a class="my-but pressme no-decoration-link" th:href="@{/data/organisations/create}"
+               data-tooltip="Внести данные">Добавить</a>
+        </div>
+        <div class="w3-center archive-table" th:if="${data.size() > 0}">
+            <table class="table_sort w3-table w3-bordered w3-card">
+                <thead>
+                <tr style="position: sticky; top: 3rem;">
+                    <th class="w3-center">Идентификатор</th>
+                    <th class="w3-center">Название</th>
+                    <th class="w3-center">Телефон</th>
+                    <th class="w3-center">Email</th>
+                    <th class="w3-center">Факс</th>
+                    <th class="w3-center">Город</th>
+                    <th class="w3-center">Адрес</th>
+                    <th class="w3-center">Индекс</th>
+                    <!--th class="w3-center"></th-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${data}">
+                    <td class="w3-center" th:utext="${item.getId()}"></td>
+                    <td class="w3-center" th:utext="${item.getName()}"></td>
+                    <td class="w3-center" th:utext="${item.getPhone}"></td>
+                    <td class="w3-center" th:utext="${item.getEmail()}"></td>
+                    <td class="w3-center" th:utext="${item.getFax()}"></td>
+                    <td class="w3-center" th:utext="${item.getCity()}"></td>
+                    <td class="w3-center" th:utext="${item.getAddress}"></td>
+                    <td class="w3-center" th:utext="${item.getPostIndex}"></td>
+                    <td class="w3-center"><a th:href="@{${'/data/organisations/' + (item.getId())}}">Подробнее</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h3 th:unless="${data.size() > 0}">Нет данных</h3>
+    </div>
+</div>
+</body>
+</html>

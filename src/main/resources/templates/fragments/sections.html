@@ -1,0 +1,76 @@
+<sidebar th:fragment="menu_archive">
+    <script src="/js/basis_functions.js"></script>
+    <div class="brand">
+        <a href="#">Архив</a>
+    </div>
+    <nav>
+        <div class="menu-section" id="sectaaa">
+            <button class="menu-collapse-button w3-large" type="button">
+                <span class="caret">▼</span> Регистрация
+            </button>
+            <div class="collapse" id="register">
+                <ul class="nav">
+                    <li>
+                        <a href="/register/issue">
+                            Выдача документа
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/register/return">
+                            Возврат документа
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu-section">
+            <button class="menu-collapse-button w3-large" type="button">
+                <span class="caret">▼</span> Журнал
+            </button>
+            <div class="collapse" id="journal">
+                <ul class="nav">
+                    <li>
+                        <a href="/journal/by_time">
+                            Журнал операций
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/journal/issued">
+                            Выданные документы
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu-section">
+            <button class="menu-collapse-button w3-large" type="button" data-toggle="collapse" data-target="#data_menu"
+                    aria-expanded="false" aria-controls="collapseExample">
+                <span class="caret">▼</span> Данные
+            </button>
+            <div class="collapse" id="data_menu">
+                <ul class="nav">
+                    <li>
+                        <a href="/data/docs">
+                            Документы
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/data/doc_types">
+                            Типы документов
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/data/departments">
+                            Отделы
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/data/organisations">
+                            Организации
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</sidebar>

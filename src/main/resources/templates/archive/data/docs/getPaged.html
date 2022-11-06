@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head (title)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/menu_style.css">
+    <link rel="stylesheet" href="/css/w3_archive_common.css">
+    <link href="/css/w3.css" rel="stylesheet">
+    <script src="/js/jqmin.js"></script>
+    <title th:text="'Архивные документы'"></title>
+</head>
+<body>
+<div id="layout">
+    <div id="menu">
+        <section th:replace="fragments/sections :: menu_archive"></section>
+    </div>
+    <div id="main">
+        <div class="head row archive-table">
+            <div class="page-head w3-show-inline-block">
+                <h1 class="page-header">Архивные документы</h1>
+                <h6 class="head-message row" th:text="${flashMessage}"></h6>
+            </div>
+            <a class="my-but pressme no-decoration-link" th:href="@{/data/docs/create}"
+               data-tooltip="Внести данные">Добавить</a>
+        </div>
+        <div class="w3-center archive-table" id="archive-table" th:if="${data.getNumberOfElements() > 0}">
+            <table class="table_sort w3-table w3-bordered w3-card">
+                <thead>
+                <tr style="position: sticky; top: 3rem;">
+                    <th class="w3-center">Арх. номер</th>
+                    <th class="w3-center">Название</th>
+                    <th class="w3-center">Тип</th>
+                    <th class="w3-center">Автор</th>
+                    <th class="w3-center">Число страниц</th>
+                    <th class="w3-center">Год создания</th>
+                    <th class="w3-center">Организация</th>
+                    <th class="w3-center"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${data}">
+                    <td class="w3-center" th:utext="${item.getId()}"></td>
+                    <td class="w3-center" th:utext="${item.getName()}"></td>
+                    <td class="w3-center" th:utext="${item.getType().getName()}"></td>
+                    <td class="w3-center" th:utext="${item.getAuthor()}"></td>
+                    <td class="w3-center" th:utext="${item.getPagesNumber()}"></td>
+                    <td class="w3-center" th:utext="${item.getYearCreated()}"></td>
+                    <td class="w3-center" th:utext="${item.getOrganisation().getName()}"></td>
+                    <td class="w3-center"><a th:href="@{${'/data/docs/' + (item.getId())}}">Подробнее</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <span class="table_controls">
+                <a class="control w3-show-inline-block w3-white" th:if="${data.hasPrevious()}"
+                   th:href="@{${'/data/docs?page=' + (page - 1)}}">⇽</a>
+                <div class="control w3-show-inline-block w3-white" th:text="${'стр. ' + page}"></div>
+                <a class="control w3-show-inline-block w3-white" th:if="${data.hasNext()}"
+                   th:href="@{${'/data/docs?page=' + (1 + page)}}">⇾</a>
+            </span>
+        </div>
+        <h3 th:unless="${data.getNumberOfElements() > 0}" th:text="${'Страница ' + page + ': Не существует'}"></h3>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head (title)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/menu_style.css">
+    <link rel="stylesheet" href="/css/w3_archive_common.css">
+    <link href="/css/w3.css" rel="stylesheet">
+    <link href="/css/jquery-editable-select.css" rel="stylesheet">
+    <script src="/js/jqmin.js"></script>
+    <script src="/js/jquery-editable-select.js"></script>
+    <title th:text="Выдача"></title>
+</head>
+<body>
+<div id="layout">
+    <div id="menu">
+        <section th:replace="fragments/sections :: menu_archive"></section>
+    </div>
+    <div id="main">
+        <div class="head row ">
+            <div class="page-head w3-show-inline-block">
+                <h1 class="page-header">Выдача документа</h1>
+                <h6 class="head-message row" th:text="${message}"></h6>
+            </div>
+        </div>
+        <form action="#" id="fake"></form>
+        <form class="myform" th:action="@{/register/issue}" th:object="${registerForm}" method="post">
+            <div class="">
+                <div class="row row-standart1 ">
+                    <div class="w3-container w3-cell">
+                        <label class="label">Документ</label>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <input type="hidden" th:field="*{docId}" class="editable-select-value">
+                        <select form="fake" th:field="*{docId}" name="" class="form_field select-editable w3-select "
+                                th:placeholder="'(необязательно)'">
+                            <option th:each="item : ${docData}" th:attr="value=${item.getId()}, id=${item.getId()}"
+                                    th:text="${item.getId()} +' - ' + ${item.getName()}"></option>
+                        </select>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <div th:if="${#fields.hasErrors('docId')}" th:errors="*{docId}">Name Error</div>
+                    </div>
+                </div>
+                <div class="row row-standart1 w3-row">
+                    <div class="w3-container w3-cell">
+                        <label class="label">Получатель</label>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <input class="form_field w3-input " th:field="*{employee}"
+                               th:placeholder="'ФИО (полностью)'"></input>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <div th:if="${#fields.hasErrors('employee')}" th:errors="*{employee}">Name Error</div>
+                    </div>
+                </div>
+                <div class="row row-standart1 ">
+                    <div class="w3-container w3-cell">
+                        <label class="label">Отдел</label>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <input type="hidden" th:field="*{depId}" class="editable-select-value">
+                        <select form="fake" th:field="*{depId}" class="form_field select-editable w3-select "
+                                th:placeholder="'(необязательно)'">
+                            <option th:each="item : ${depData}" th:attr="value=${item.getId()}"
+                                    th:text="${item.getName()}"></option>
+                        </select>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <div th:if="${#fields.hasErrors('depId')}" th:errors="*{depId}">Name Error</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-standart1 controls"> <!--выпадающий список!-->
+                <button type="submit" class="pressme my-but" data-tooltip="Всплывающая подсказка">Готово</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<script>
+    $('.select-editable').editableSelect();
+</script>
+</body>
+</html>
+<!-- w3-btn w3-white w3-border w3-border-blue w3-round-->

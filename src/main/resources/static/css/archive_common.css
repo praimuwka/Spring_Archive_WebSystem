@@ -1,0 +1,137 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:400,300,300italic,600,700&subset=latin,cyrillic-ext,greek);
+
+#main {
+    width: calc(100% - 190px);
+    position: absolute;
+    left: 190px;
+    padding-left: 100px;
+    padding-top: 150px;
+}
+
+.head {
+    font-size: 40pt;
+    font-weight: normal;
+    font-family: Inter;
+    /*letter-spacing: 5px;*/
+    margin-bottom: 20px;
+}
+
+.row {
+    width: 100%;
+}
+
+.row-standart1 {
+    margin: 10px 0;
+    height: 52px;
+}
+
+div.controls {
+    width: 100%;
+    max-width: 494px;
+}
+
+.label {
+    vertical-align: baseline;
+    display: inline-block;
+    font-size: 20pt;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    width: 170px;
+    color: Black;
+}
+
+.form_field {
+    vertical-align: baseline;
+    display: inline-block;
+    width: 320px;
+    height: 40px;
+    color: black;
+    background: #DDFBFF;
+    font-size: 20pt;
+    font-family: 'Times New Roman';
+}
+
+/*//////////////////////////////////*/
+
+textarea.form_field {
+    resize: none;
+}
+
+select.form_field {
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+    background-size: 0.85em auto;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M70.3 13.8L40 66.3 9.7 13.8z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
+}
+
+textarea.form_field,
+input.form_field,
+select.form_field {
+    box-shadow: 0 0 0 1px #21292A;
+    /*border-radius: 5px;*/
+    padding: 4px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    o-appearance: none;
+
+}
+
+/*РЕДАКТИРОВАНИЕ ВыКЛЮЧЕНО*/
+
+/*Отключаем реакцию мыши на элементы*/
+/*textarea.form_field:read-only:focus,
+input.form_field:read-only:focus{
+	outline: none;
+}*/
+textarea.form_field:read-only:hover,
+input.form_field:read-only:hover {
+    cursor: inherit;
+}
+
+select.form_field[readonly] {
+    pointer-events: none;
+    background-image: none;
+}
+
+/*Оформление, похожее на обычный текст*/
+textarea.form_field:read-only,
+input.form_field:read-only,
+select.form_field[readonly] {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+select.form_field:read-only::-ms-expand {
+    display: none;
+}
+
+
+.my-but {
+    display: inline-block;
+    float: right;
+    width: 160px;
+    height: 50px;
+    font-size: 16pt;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-left: 5px;
+    border: 1px ridge;
+    text-align: center;
+}
+
+.pressme {
+    background: #2DBCD0;
+    border-color: #00444D;
+    color: #00444D;
+}
+
+.nopress {
+    background: #DDFBFF;
+    border-color: #22555C;
+    color: #22555C;
+}

@@ -1,0 +1,54 @@
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/menu_style.css">
+    <link rel="stylesheet" href="/css/w3_archive_common.css">
+    <link href="/css/w3.css" rel="stylesheet">
+    <link href="/css/jquery-editable-select.css" rel="stylesheet">
+    <script src="/js/jqmin.js"></script>
+    <script src="/js/more-edit.js"></script>
+    <script src="/js/jquery-editable-select.js"></script>
+    <title th:text="'Данные: тип документа'"></title>
+</head>
+<body>
+<div id="layout">
+    <div id="menu">
+        <section th:replace="fragments/sections :: menu_archive"></section>
+    </div>
+    <div id="main">
+        <div>
+            <h1 class="head row" th:text="*{'Тип №' + documentType.getId()}">Добавление отдела</h1>
+        </div>
+        <form id="dataForm" class="myform" th:action="@{${'/data/doc_types/' + documentType.getId()}}"
+              th:object="${documentType}" method="post">
+            <div class="">
+                <input type="hidden" th:field="*{id}">
+                <div class="row row-standart1 w3-row">
+                    <div class="w3-container w3-cell">
+                        <label class="label">Название</label>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <input class="form_field w3-input " th:field="*{name}" th:placeholder="'Название типа'">
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row row-standart1 controls"> <!--выпадающий список!-->
+            <button id="edit" type="button" onclick="turnEditOn()" class="pressme my-but"
+                    data-tooltip="Изменить данные">Редактировать
+            </button>
+            <button id="cancel" type="button" onclick="turnEditOff()" class="nopress my-but">Отмена</button>
+            <button id="submit" form="dataForm" type="submit" class="pressme my-but"
+                    data-tooltip="Подтвердить изменения">Сохранить
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

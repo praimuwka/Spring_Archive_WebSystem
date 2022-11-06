@@ -1,0 +1,71 @@
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/menu_style.css">
+    <link rel="stylesheet" href="/css/w3_archive_common.css">
+    <link href="/css/w3.css" rel="stylesheet">
+    <link href="/css/jquery-editable-select.css" rel="stylesheet">
+    <script src="/js/jqmin.js"></script>
+    <script src="/js/jquery-editable-select.js"></script>
+    <title th:text="'Добавление отдела'"></title>
+</head>
+<body>
+<div id="layout">
+    <div id="menu">
+        <section th:replace="fragments/sections :: menu_archive"></section>
+    </div>
+    <div id="main">
+        <div>
+            <h1 class="head row">Добавление отдела</h1>
+        </div>
+        <form class="myform" th:action="@{/data/departments/create}" th:object="${department}" method="post">
+            <div class="">
+                <div class="row row-standart1 w3-row">
+                    <div class="w3-container w3-cell">
+                        <label class="label">Название</label>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <input class="form_field w3-input " th:field="*{name}"
+                               th:placeholder="'Название отдела'"></input>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+                    </div>
+                </div>
+                <div class="row row-standart1 w3-row">
+                    <div class="w3-container w3-cell">
+                        <label class="label">Телефон</label>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <input class="form_field w3-input " th:field="*{phone}"
+                               th:placeholder="'Номер телефона'"></input>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name Error</div>
+                    </div>
+                </div>
+                <div class="row row-standart1 w3-row">
+                    <div class="w3-container w3-cell">
+                        <label class="label">Начальник</label>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <input class="form_field w3-input " th:field="*{boss}"
+                               th:placeholder="'ФИО начальника (полное)'"></input>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <div th:if="${#fields.hasErrors('boss')}" th:errors="*{boss}">Name Error</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-standart1 controls"> <!--выпадающий список!-->
+                <button type="submit" class="pressme my-but" data-tooltip="Добавить новый отдел в список">Добавить
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head th:replace="fragments/h_f :: head ('Вход в систему')"></head>
+<body>
+<header th:replace="fragments/h_f :: header_noAuth"></header>
+<main>
+    <div id="maincontainer">
+        <link rel="stylesheet" href="/styles/auth-style.css">
+        <div class="form_auth_block">
+            <div class="form_auth_block_content">
+                <p class="form_auth_block_head_text">Авторизация</p>
+                <form class="form_auth_style" method="post" action="/auth/login">
+                    <label>Введите логин</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Логин"
+                           required="" autofocus="">
+                    <label>Введите пароль</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Пароль"
+                           required="">
+                    <button class="form_auth_button" id="submitLogin" type="submit">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

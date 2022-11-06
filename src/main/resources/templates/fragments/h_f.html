@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head th:fragment="head (title)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/menu_style.css">
+    <!--link rel="stylesheet" href="/css/archive_common.css"-->
+    <link href="/css/w3.css" rel="stylesheet">
+    <script src="/js/jqmin.js"></script>
+    <!--link rel="stylesheet" href="/styles/header-style.css"-->
+    <title th:text="${title}"></title>
+</head>
+
+
+<header th:fragment="header_noAuth">
+    <label class="nav-button">Error management system</label>
+</header>
+
+<header th:fragment="header">
+    <nav id="nav-controls">
+        <ul id="nav-menu-list">
+            <li><a class="nav-button active" href="/createError">Зарегистрировать ошибку</a></li>
+            <li><a class="nav-button active" href="/errors">Список ошибок</a></li>
+            <li><a class="nav-button active" href="/createUser">Добавление пользователя</a></li>
+            <li><a class="nav-button active" href="/users">Список пользователей</a></li>
+            <li><a class="nav-button active" href="/users?idUsers=1">Мой профиль</a></li>
+            <li class="exit">
+                <form action="/auth/logout" method="post">
+                    <button type="submit" class="nav-button">Выход</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<footer th:fragment="footer">
+    <p></p>
+</footer>

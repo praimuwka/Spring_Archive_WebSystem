@@ -1,0 +1,182 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:400,300,300italic,600,700&subset=latin,cyrillic-ext,greek);
+
+#main {
+    width: calc(100% - 190px);
+    position: absolute;
+    left: 190px;
+    padding-left: 100px;
+    padding-top: 100px;
+}
+
+.head {
+    margin-bottom: 20px;
+}
+
+.head-message {
+    color: darkgreen;
+}
+
+.page-header {
+    font-size: 40pt;
+    font-weight: normal;
+    font-family: Inter;
+    /*letter-spacing: 5px;*/
+}
+
+div.page-head {
+    max-width: calc(100% - 170px);
+}
+
+.head > .pressme {
+    margin-top: 60px;
+
+}
+
+.row {
+    width: 100%;
+}
+
+.row-standart1 {
+    margin: 10px 0;
+    height: 52px;
+    max-width: 95%;
+}
+
+.label {
+    display: inline-block;
+    font-size: 20pt;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    width: 170px;
+    color: Black;
+}
+
+.form_field {
+    display: inline-block;
+    width: 400px;
+    height: 40px;
+    color: black;
+    font-size: 20pt;
+    font-family: 'Inter';
+    font-style: oblique;
+}
+
+div.err-block {
+    display: inline-block;
+}
+
+div.controls {
+    width: 100%;
+    max-width: 600px;
+}
+
+.archive-table {
+    max-width: 95%;
+}
+
+a.no-decoration-link {
+    text-decoration: none;
+}
+
+span.table_controls {
+    display: inline-block;
+    margin-top: 5px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 5px 15px;
+}
+
+span.table_controls.control {
+    padding: 5px;
+    float: right;
+}
+
+.table_controls a {
+    text-decoration: none;
+}
+
+.my-but {
+    font-variant-ligatures: inherit;
+    font-variant-caps: inherit;
+    font-variant-numeric: inherit;
+    font-variant-east-asian: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+
+    font-family: 'Inter';
+    display: inline-block;
+    float: right;
+    min-width: 160px;
+    height: 50px;
+    font-size: 18pt;
+    padding: 10px 20px;
+    margin-left: 5px;
+    border: 1px ridge;
+    text-align: center;
+    vertical-align: center;
+    text-transform: none;
+}
+
+[data-tooltip] {
+    position: relative; /* Относительное позиционирование */
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 150px;
+    top: 0px; /* Положение подсказки */
+    background: #FFE938; /* Синий цвет фона */
+    color: #4C4A38; /* Цвет текста */
+    padding: 0.3em; /* Поля вокруг текста */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); /* Параметры тени */
+    pointer-events: none; /* Подсказка */
+    opacity: 0; /* Подсказка невидима */
+    transition: 0.3s; /* Время появления подсказки */
+    transition-delay: 0.3s;
+    font-size: 12pt;
+    width: 150px;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1; /* Показываем подсказку */
+    top: 2em; /* Положение подсказки */
+}
+
+textarea.form_field:read-only:hover,
+input.form_field:read-only:hover {
+    cursor: inherit;
+}
+
+select.form_field[readonly] {
+    pointer-events: none;
+}
+
+/*Оформление, похожее на обычный текст*/
+input.form_field:read-only {
+    background-image: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-style: initial;
+}
+
+.pressme {
+    background: #412A66;
+    color: white;
+}
+
+.pressme:hover {
+    background: #210055;
+}
+
+.nopress {
+    background: #DDFBFF;
+    border-color: #22555C;
+    color: #22555C;
+}
+
+.nopress:hover {
+    background: #BBE2E8;
+}

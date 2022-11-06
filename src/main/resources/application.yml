@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/course_spring
+    username: root
+    password: AD3EA77E
+
+# enable SSL for https-------------------------------------------------
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-alias: primesecurity
+    key-password: primesecurity
+    key-store: classpath:primesecurity.p12
+    key-store-password: primesecurity
+
+security:
+  require-ssl: true # true/false ~ https only / http & https
+#-----------------------------------------------------------------------

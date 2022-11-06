@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head th:replace="fragments/h_f :: head ('Welcome')"></head>
+<body>
+<header th:replace="fragments/h_f :: header"></header>
+<main>
+    <div id="maincontainer">
+        <link rel="stylesheet" href="/styles/auth-style.css">
+        <div class="form_auth_block">
+            <div class="form_auth_block_content">
+                <div class="welcome">
+                    <label>Welcome #session.stLoggedInUser.userLastName# #session.stLoggedInUser.userFirstName#!</label>
+                    <a class="form_auth_button" th:href="@{/users(id=${5})}">Мой профиль</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
